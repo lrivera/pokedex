@@ -1,0 +1,13 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow: hidden;
+}
+.list{
+  width: 100%;
+  min-width: 360px;
+}
+.texts{
+  color: #fff
+}
