@@ -66,18 +66,13 @@ const Detail = ({getPokemonsById, pokemons={}}) => {
             }
         })
 
-        const spritesImgs = (
-            <>
-                {Object.keys(poke.sprites).map((pkey)=>{
+        const spritesImgs = Object.keys(poke.sprites).map((pkey)=>{
                     let img =null, spr = poke.sprites[pkey]
                     if(spr!==null){
                         img = <img onClick={()=>setImageProp(pkey)} key={pkey} alt={pkey} src={spr} className={'avatar'} />    
                     }
                     return img
-                })}
-                
-            </>
-        )
+                })
         card = (
             <Bounce right>
                 <Card className='card'>
