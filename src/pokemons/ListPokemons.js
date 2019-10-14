@@ -36,7 +36,6 @@ class ListPokemons extends Component<Props> {
 
         return (
             <Zoom left>
-                  <h1>POKEDEX</h1>
                 <div className={'root'}>
                 <InfiniteScroll
                     pageStart={page}
