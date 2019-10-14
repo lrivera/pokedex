@@ -4,7 +4,7 @@ import PokemonActions from '../redux/Pokemon'
 import { connect } from 'react-redux'
 import './ListPokemons.css';
 import InfiniteScroll from 'react-infinite-scroller';
-import {HeadShake, Zoom} from 'react-reveal';
+import {Zoom} from 'react-reveal';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';

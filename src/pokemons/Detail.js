@@ -7,7 +7,7 @@ import {
 import PokemonActions from '../redux/Pokemon'
 
 import { connect } from 'react-redux'
-import {Bounce} from 'react-reveal';
+import {Bounce, Flip} from 'react-reveal';
 
 import Dialog from '@material-ui/core/Dialog';
 import './Detail.css';
@@ -48,11 +48,13 @@ const Detail = ({getPokemonsById, pokemons={}}) => {
         const {[imageProp]:urlImg=null} = sprites
         if(urlImg !== null){
             img = (
-                <CardMedia
-                        className='media'
-                        image={urlImg}
-                        title={poke.name}
-                    />
+                <Flip>
+                    <CardMedia
+                            className='media'
+                            image={urlImg}
+                            title={poke.name}
+                        />
+                </Flip>
             )
         }
 
