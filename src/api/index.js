@@ -1,6 +1,6 @@
 import apisauce from 'apisauce'
 
-const create = (baseURL = 'https://pokeapi.co/api/v2') => {
+const create = (baseURL:string = 'https://pokeapi.co/api/v2') => {
 
   const api = apisauce.create({
     baseURL,
@@ -11,8 +11,8 @@ const create = (baseURL = 'https://pokeapi.co/api/v2') => {
   })
 
   // GET CALLS
-  const getPokemons = (offset=0, limit=20) => api.get(`/pokemon?offset=${offset}&limit=${limit}`)
-  const getPokemonById = (pokemonId) => api.get(`/pokemon/${pokemonId}`)
+  const getPokemons = (offset:number=0, limit:number=20) => api.get(`/pokemon?offset=${offset}&limit=${limit}`)
+  const getPokemonById = (pokemonId:string) => api.get(`/pokemon/${pokemonId}`)
   
   return {
     getPokemons,

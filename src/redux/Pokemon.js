@@ -36,11 +36,17 @@ export const INITIAL_STATE = Immutable({
 /* ------------- Reducers ------------- */
 
 // request the data from an api
-export const request = state => state.merge({ fetching: true })
-export const requestPokemon = state => state.merge({ pokemonFetching: true })
+export const request = (state:any) => state.merge({ fetching: true })
+export const requestPokemon = (state:any) => state.merge({ pokemonFetching: true })
 
 // successful api lookup
-export const success = (state, action) => {
+type successActionType = {
+  payload:{
+    results:Array<any>,
+  },
+  page:number,
+}
+export const success = (state:any, action:successActionType) => {
   const { payload:{results=[]}={}, page=0 } = action
 //   const newData = [...state.data, ...results]
   const newDataObj = results.reduce((prev, curr)=>{
@@ -63,10 +69,13 @@ export const success = (state, action) => {
 }
 
 // Something went wrong somewhere.
-export const failure = state => state.merge({ fetching: false, error: true })
+export const failure = (state:any) => state.merge({ fetching: false, error: true })
 
-
-export const setPokemonById = (state, action) => {
+type setPokemonByIdType = {
+  pokemon:{},
+  id:string
+}
+export const setPokemonById = (state:any, action:setPokemonByIdType) => {
     const { dataObj } = state
     
     const { pokemon, id } = action
@@ -86,7 +95,7 @@ export const setPokemonById = (state, action) => {
       })
 }
 
-export const failurePokemonById = state => state.merge({ pokemonFetching: false, pokemonError: true })
+export const failurePokemonById = (state:any) => state.merge({ pokemonFetching: false, pokemonError: true })
   
 /* ------------- Hookup Reducers To Types ------------- */
 

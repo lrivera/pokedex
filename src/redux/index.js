@@ -8,7 +8,7 @@ let sagaMiddleware = createSagaMiddleware();
 const reducers = combineReducers({
   pokemon: require('./Pokemon').reducer,
 })
-let store = createStore(reducers, applyMiddleware(sagaMiddleware));
+let store:any = createStore(reducers, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(mySaga)
 

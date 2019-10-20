@@ -8,8 +8,7 @@ import Detail from './Detail'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-class Content extends Component {
-    state={}
+class Content extends Component<{}> {
     render(){
         return ( 
           <>

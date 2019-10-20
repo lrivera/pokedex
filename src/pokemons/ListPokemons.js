@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 
 import PokemonActions from '../redux/Pokemon'
 import { connect } from 'react-redux'
+
 import './ListPokemons.css';
 import InfiniteScroll from 'react-infinite-scroller';
 import {Zoom} from 'react-reveal';
@@ -15,17 +16,22 @@ import Divider from '@material-ui/core/Divider';
 import {cap} from '../Utils'
 import { Link } from "react-router-dom";
 
-type Props = {
+type OwnProps = {|
+|}
+
+type PropsType = {
+  ...OwnProps,
   page: number,
-  pokemons: T,
-};
-class ListPokemons extends Component<Props> {
+  pokemons: {},
+  getPokemons:(page:number)=>any,
+}
+class ListPokemons extends Component<PropsType, {}> {
     state={}
     // componentDidMount(){
     //     const {page} = this.props
     //     this.loadPokemons(page)
     // }
-    loadPokemons = (page:Number=0)=>{
+    loadPokemons = (page:number=0)=>{
       console.log({page})
       const {getPokemons} = this.props
       getPokemons(page)
@@ -75,19 +81,25 @@ class ListPokemons extends Component<Props> {
     }
 }
 
+type ListStatePokemonsType = {
+  pokemon:{
+    dataObj:{},
+    page:number
+  }
+}
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state:ListStatePokemonsType) => ({
     pokemons: state.pokemon.dataObj,
     page: state.pokemon.page,
     // dataObj: state.pokemon.dataObj,
   })
   
-  const mapDispatchToProps = dispatch => ({
-    getPokemons: (page) => dispatch(PokemonActions.pokemonsRequest(page))
+  const mapDispatchToProps = (dispatch:(...args: Array<any>) => any) => ({
+    getPokemons: (page:number) => dispatch(PokemonActions.pokemonsRequest(page))
   })
   
   
-  let ListPokemonsContainer = connect(
+  const ListPokemonsContainer:any = connect(
     mapStateToProps,
     mapDispatchToProps
   )(ListPokemons)
